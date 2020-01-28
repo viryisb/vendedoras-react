@@ -1,0 +1,42 @@
+
+.table {
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  td {
+    display: table-cell;}
+  .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    /* otra forma de agregar estilo al modal */
+    .modal.active {
+      display: block;
+    }
+    .modal .modal-backdrop {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: #000000;
+      opacity: 0.5;
+    }
+    .modal .modal-container {
+      position: absolute;
+      background-color: #ffffff;
+      top: 25px;
+      right: 0;
+      left: 0;
+      width: 30%;
+      margin: auto;
+      z-index: 1041;
+    }
+    .venta{
+        display: flex;
+        
+    }

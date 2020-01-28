@@ -1,61 +1,73 @@
 import React from 'react';
-import MenuList from './components/MenuList';
 import './App.css';
+import './style.css';
+import TablaVentas from './components/tabla-ventas';
+import TablaSucursal from './components/tabla-sucursal'
 
 class App extends React.Component {
-  constructor (props) {
-    super(props);
-
-    this.state = {
-    
+  constructor (props){
+    super()
+    this.state={
+      vendedoras:props.datosLocal.vendedoras,
+      ventas:props.datosLocal.ventas,
+      precios:props.datosLocal.precios,
+      sucursales:props.datosLocal.sucursales
     }
   }
 
   render () {
-    const items = [
-      {
-        id: 1,
-        nombre: 'Magna.'
-      },
-      {
-        id: 2,
-        nombre: 'Et.',
-        items: [{
-          id: 6,
-          nombre: 'Consetetur.'
-        }, {
-          id: 7,
-          nombre: 'By.'
-        }]
-      },
-      {
-        id: 3,
-        nombre: 'Stet.'
-      },
-      {
-        id: 4,
-        nombre: 'Est.',
-        items: [{
-          id: 8,
-          nombre: 'Crime.',
-          items: [{
-            id: 9,
-            nombre: 'Takimata.'
-          }, {
-            id: 10,
-            nombre: 'Loved.'
-          }]
-        }]
-      },
-      {
-        id: 5,
-        nombre: 'Erat.'
-      }
-    ];
-  return ( <div>{JSON.stringify(this.props.datosLocal)}</div>
     
-        );
-  }
+  return ( <div>{JSON.stringify(this.state)}
+ 
+  <TablaVentas ventas={this.state.ventas} precios={this.state.precios}/>
+ 
+ <TablaSucursal ventas={this.state.ventas} precios={this.state.precios} sucursales={this.state.sucursales}/>
+
+    <div class="table-wrapper">
+        <div class="d-flex flex-column bd-highlight bg-white container">
+            <p>Producto estrella: <span id="productoEstrella"></span></p>
+          </div>
+  </div>
+  
+  <div class="modal" id="modal-nueva-venta">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container">
+      <div class="modal-header">
+        Nueva venta
+      </div>
+      <div class="modal-body">
+       
+        <form action="">
+          <div class="form-group">
+            <h4 class="modal-title">Agregar Venta</h4>
+           <label for="">Vendedora</label>
+            <select id="vendedora" class="form-control">
+        </select>
+        <div class="form-group">
+            <label>Componentes</label>
+          <select multiple="" id="componentes" class="form-control">
+          </select>
+          </div>
+          <div class="form-group">
+              <label>Sucursal</label>
+            <select id="sucursal" class="form-control">
+              
+            </select>
+          </div>
+      </div>
+    </form>
+     
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal-close">Cancel</button>
+        <button class="btn-modal-agregar">Add</button>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+  ) 
+ }
 }
 
 
