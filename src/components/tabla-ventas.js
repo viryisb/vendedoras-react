@@ -8,10 +8,10 @@ class TablaVentas extends React.Component{
             ventas:props.ventas
         }
     }
-    borrarVenta(id){
+    /*borrarVenta(id){
         let ventas = this.state.ventas.filter(venta => venta.id !== id);
         this.setState({ventas: ventas})
-    }
+    }*/
     createTable(){
         let ventas= this.state.ventas;
         let table=[];
@@ -24,7 +24,7 @@ class TablaVentas extends React.Component{
             <td>{ venta.componentes }</td>
             <td>{helper.precioMaquina(venta.componentes, this.props.precios)}</td>
             <td>
-                <a href="#deleteEmployeeModal" onClick={() => {this.borrarVenta(venta.id)}}>x
+                <a href="#deleteEmployeeModal" onClick={() => {this.props.borrarVenta(venta.id)}}>x
                 </a>
             </td>
             </tr>)
@@ -35,22 +35,22 @@ class TablaVentas extends React.Component{
     }
     render () {
         return(
-            <div class="container">
-      <div class="table-wrapper">
-      <div class="table-tittle">
-          <div class="row">
-            <div class="col-sm-6">
+            <div className="container">
+      <div className="table-wrapper">
+      <div className="table-tittle">
+          <div className="row">
+            <div className="col-sm-6">
             <h2>Ventas</h2> 
             </div>
-          <div class="col-sm-6">
-          <button class="btn-agregar-venta">
+          <div className="col-sm-6">
+          <button className="btn-agregar-venta">
             <span>Agregar venta</span>
           </button>
              </div>
             </div>
            </div>
           </div>
-        <table class="table table-stripped table-hover table-responsive">
+        <table className="table table-stripped table-hover table-responsive">
         <thead>
           <tr>
               <th>Fecha</th>

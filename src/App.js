@@ -3,6 +3,7 @@ import './App.css';
 import './style.css';
 import TablaVentas from './components/tabla-ventas';
 import TablaSucursal from './components/tabla-sucursal'
+import TablaEstadisticas from './components/tabla-estadisticas'
 
 class App extends React.Component {
   constructor (props){
@@ -14,43 +15,43 @@ class App extends React.Component {
       sucursales:props.datosLocal.sucursales
     }
   }
+  borrarVenta(id){
+    let ventas = this.state.ventas.filter(venta => venta.id !== id);
+    this.setState({ventas: ventas})
+}
 
   render () {
     
-  return ( <div>{JSON.stringify(this.state)}
+  return ( <div>{JSON.stringify(this.state.ventas)}
  
-  <TablaVentas ventas={this.state.ventas} precios={this.state.precios}/>
+  <TablaVentas ventas={this.state.ventas} precios={this.state.precios} borrarVenta={this.borrarVenta}/>
  
  <TablaSucursal ventas={this.state.ventas} precios={this.state.precios} sucursales={this.state.sucursales}/>
 
-    <div class="table-wrapper">
-        <div class="d-flex flex-column bd-highlight bg-white container">
-            <p>Producto estrella: <span id="productoEstrella"></span></p>
-          </div>
-  </div>
+  <TablaEstadisticas ventas={this.state.ventas} precios={this.state.precios} vendedoras={this.state.vendedoras} />
   
-  <div class="modal" id="modal-nueva-venta">
-    <div class="modal-backdrop"></div>
-    <div class="modal-container">
-      <div class="modal-header">
+  <div className="modal" id="modal-nueva-venta">
+    <div className="modal-backdrop"></div>
+    <div className="modal-container">
+      <div className="modal-header">
         Nueva venta
       </div>
-      <div class="modal-body">
+      <div className="modal-body">
        
         <form action="">
-          <div class="form-group">
-            <h4 class="modal-title">Agregar Venta</h4>
+          <div className="form-group">
+            <h4 className="modal-title">Agregar Venta</h4>
            <label for="">Vendedora</label>
-            <select id="vendedora" class="form-control">
+            <select id="vendedora" className="form-control">
         </select>
-        <div class="form-group">
+        <div className="form-group">
             <label>Componentes</label>
-          <select multiple="" id="componentes" class="form-control">
+          <select multiple="" id="componentes" className="form-control">
           </select>
           </div>
-          <div class="form-group">
+          <div className="form-group">
               <label>Sucursal</label>
-            <select id="sucursal" class="form-control">
+            <select id="sucursal" className="form-control">
               
             </select>
           </div>
@@ -58,9 +59,9 @@ class App extends React.Component {
     </form>
      
       </div>
-      <div class="modal-footer">
-        <button class="btn-modal-close">Cancel</button>
-        <button class="btn-modal-agregar">Add</button>
+      <div className="modal-footer">
+        <button className="btn-modal-close">Cancel</button>
+        <button className="btn-modal-agregar">Add</button>
       </div>
     </div>
   </div>

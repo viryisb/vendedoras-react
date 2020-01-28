@@ -27,11 +27,11 @@ class TablaSucursal extends React.Component{
         return table
     }
     render(){
-        return(  <div class="d-flex flex-column bd-highlight bg-white container">
+        return(  <div className="d-flex flex-column bd-highlight bg-white container">
         <div>
           <h2>Ventas por sucursal</h2>
         </div>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Sucursal</th>
